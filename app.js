@@ -19,3 +19,33 @@ function updateCook(){const el=document.querySelector('#cookMode');el.querySelec
 function addRecipe(e){e.preventDefault();const f=new FormData(e.currentTarget);const recipe={id:`custom-${Date.now()}`,title:f.get('title').trim(),category:f.get('category'),tags:[f.get('category')],time:Number(f.get('time'))||30,emoji:'🧁',art:'custom',description:f.get('description').trim()||'وصفة جديدة انضافت إلى دفتر جوري.',servings:'على مزاجك',ingredients:f.get('ingredients').split('\n').map(s=>s.trim()).filter(Boolean),steps:f.get('steps').split('\n').map(s=>s.trim()).filter(Boolean),favorite:false,rating:0,note:''};recipes.unshift(recipe);save();render();e.currentTarget.reset();hideModal(document.querySelector('#addModal'));showToast('انحفظت وصفتك في الدفتر ♡');openRecipe(recipe.id)}
 document.querySelector('#filters').addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(!b)return;activeCategory=b.dataset.category;document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x===b));render()});document.querySelector('#searchInput').addEventListener('input',render);document.querySelector('.search-toggle').addEventListener('click',()=>{document.querySelector('#searchInput').focus();document.querySelector('#recipes').scrollIntoView({behavior:'smooth'})});document.querySelector('#recipeGrid').addEventListener('click',e=>{const fav=e.target.closest('[data-fav]');const open=e.target.closest('[data-open]');if(fav)toggleFavorite(fav.dataset.fav);if(open)openRecipe(open.dataset.open)});document.querySelector('#recipeDetail').addEventListener('click',e=>{const rate=e.target.closest('[data-rate]');if(rate&&currentRecipe){currentRecipe.rating=Number(rate.dataset.rate);save();openRecipe(currentRecipe.id)}if(e.target.id==='startCook')startCook();if(e.target.id==='modalFavorite'&&currentRecipe)toggleFavorite(currentRecipe.id)});document.querySelector('#recipeDetail').addEventListener('input',e=>{if(e.target.id==='recipeNote'&&currentRecipe){currentRecipe.note=e.target.value;save()}});document.querySelector('#openAdd').addEventListener('click',()=>showModal(document.querySelector('#addModal')));document.querySelector('#addRecipeForm').addEventListener('submit',addRecipe);document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>closeAll()));document.querySelectorAll('.modal-backdrop').forEach(b=>b.addEventListener('click',e=>{if(e.target===b)closeAll()}));document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeAll();const mode=document.querySelector('#cookMode');if(mode){mode.remove();document.body.style.overflow=''}}});document.querySelector('#randomRecipe').addEventListener('click',()=>{const r=recipes[Math.floor(Math.random()*recipes.length)];if(r){openRecipe(r.id);showToast('اختيار اليوم من دفتر جوري ✿')}});document.querySelector('#viewAll').addEventListener('click',()=>{activeCategory='الكل';document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x.dataset.category==='الكل'));document.querySelector('#searchInput').value='';render();document.querySelector('#recipes').scrollIntoView({behavior:'smooth'})});
 render();
+
+// A gentle bakery entrance, warm floating embers, and scroll reveals.
+(function startBakeryAtmosphere(){
+  const entry=document.querySelector('#bakeryEntry');
+  const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(entry&&!reducedMotion&&!sessionStorage.getItem('juri-bakery-entered')){
+    document.body.classList.add('entering-bakery');
+    window.setTimeout(()=>entry.classList.add('open'),360);
+    window.setTimeout(()=>{entry.classList.add('done');document.body.classList.remove('entering-bakery');sessionStorage.setItem('juri-bakery-entered','1')},1580);
+  }else if(entry)entry.classList.add('done');
+
+  const embers=document.querySelector('#embers');
+  if(embers&&!reducedMotion){for(let i=0;i<22;i++){const ember=document.createElement('i');ember.className='ember';ember.style.left=`${Math.random()*100}%`;ember.style.setProperty('--duration',`${9+Math.random()*12}s`);ember.style.setProperty('--delay',`${-Math.random()*18}s`);ember.style.setProperty('--drift',`${Math.round(Math.random()*100-50)}px`);embers.append(ember)}}
+
+  const revealTargets=document.querySelectorAll('.welcome-strip,.recipe-section,.note-section,.footer');
+  let revealObserver;
+  if('IntersectionObserver'in window&&!reducedMotion){
+    revealObserver=new IntersectionObserver(items=>items.forEach(item=>{if(item.isIntersecting){item.target.classList.add('revealed');revealObserver.unobserve(item.target)}}),{threshold:.12});
+    revealTargets.forEach(el=>{el.classList.add('reveal-on-scroll');revealObserver.observe(el)});
+    const observeCards=()=>document.querySelectorAll('.recipe-card:not(.reveal-on-scroll)').forEach((card,i)=>{card.classList.add('reveal-on-scroll');card.style.setProperty('--reveal-delay',`${Math.min(i,5)*90}ms`);revealObserver.observe(card)});
+    observeCards();new MutationObserver(observeCards).observe(document.querySelector('#recipeGrid'),{childList:true});
+  }else revealTargets.forEach(el=>el.classList.add('revealed'));
+
+  const progress=document.querySelector('#scrollProgress');
+  const updateProgress=()=>{const room=document.documentElement.scrollHeight-window.innerHeight;progress.style.transform=`scaleX(${room>0?window.scrollY/room:0})`};
+  window.addEventListener('scroll',updateProgress,{passive:true});updateProgress();
+
+  const scene=document.querySelector('.bakery-scene');
+  if(scene&&!reducedMotion){scene.addEventListener('pointermove',e=>{const r=scene.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;scene.style.setProperty('--mx',`${x*-9}px`);scene.style.setProperty('--my',`${y*-7}px`)});scene.addEventListener('pointerleave',()=>{scene.style.setProperty('--mx','0px');scene.style.setProperty('--my','0px')})}
+})();
