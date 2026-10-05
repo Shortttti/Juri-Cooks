@@ -29,6 +29,7 @@
     </nav>
     <div class="top-actions">
       <button class="icon-btn search-toggle" aria-label="فتح البحث" title="بحث">⌕</button>
+      <button class="tray-button" id="openTray" aria-label="افتحي صينية التجهيز"><span>▱</span> صينيتي <i id="trayCount">0</i></button>
       <button class="add-button" id="openAdd"><span>＋</span> أضيفي وصفة</button>
       <button class="avatar" aria-label="ملف جوري">ج</button>
     </div>
@@ -44,7 +45,7 @@
           <a href="#recipes" class="primary-link">ادخلي واجهة العرض <span>←</span></a>
           <span class="hand-note">طازج من الفرن كلّه حب <span>♡</span></span>
         </div>
-        <div class="hero-stats"><span><b id="recipeCount">2</b> وصفات</span><i></i><span><b id="favoriteCount">0</b> مفضّلة</span><i></i><span>من مطبخ جوري <b>♡</b></span></div>
+        <div class="hero-stats"><span><b id="recipeCount">2</b> وصفات</span><i></i><span><b id="favoriteCount">0</b> مفضّلة</span><i></i><span><b id="bakeCount">0</b> ختم خَبز <b>✦</b></span></div>
       </div>
       <div class="hero-art bakery-scene" aria-label="واجهة مخبز جوري الدافئة">
         <div class="bakery-glow"></div><div class="bakery-arch"></div>
@@ -104,6 +105,10 @@
     <label>الطريقة <small>اكتبي كل خطوة في سطر</small><textarea required name="steps" rows="4" placeholder="اخلطي المكونات الجافة...&#10;أضيفي الزبدة... "></textarea></label>
     <button class="add-button form-submit" type="submit">احفظيها في دفتري <span>♡</span></button>
   </form></div></div>
+  <div class="tray-backdrop hidden" id="trayBackdrop"></div>
+  <aside class="tray-drawer" id="trayDrawer" aria-label="صينية تجهيز الوصفات" aria-hidden="true"><div class="tray-head"><div><span class="eyebrow small-eye">YOUR BAKING TRAY</span><h2>صينية <em>التجهيز</em></h2></div><button id="closeTray" aria-label="إغلاق الصينية">×</button></div><div id="trayContent"></div></aside>
+  <div class="celebration-layer" id="celebrationLayer" aria-hidden="true"></div>
+  <div class="pick-overlay hidden" id="pickOverlay" role="dialog" aria-modal="true" aria-label="اختيار وصفة اليوم"><div class="pick-card"><button class="pick-close" id="closePick" aria-label="إغلاق">×</button><span class="eyebrow">TODAY'S BAKERY PICK</span><div class="pick-spinner" id="pickSpinner">🥮</div><p>خليني أختار لك شيء لذيذ...</p><h2 id="pickTitle">من أي رف نبدأ؟</h2><button class="add-button hidden" id="pickOpen">افتحي وصفة اليوم <span>↗</span></button></div></div>
   <div class="toast" id="toast" role="status"></div>
 </body>
 </html>
