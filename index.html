@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8f4eb">
-  <meta name="description" content="Juri Cooks — دفتر وصفات جوري، محفوظة بحب ومكتوبة على مزاجك.">
+  <meta name="theme-color" content="#2b1b18">
+  <meta name="description" content="Juri Cooks — ادخلي مخبز جوري واكتشفي وصفات دافئة محفوظة بحب.">
   <title>Juri Cooks — وصفات جوري</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,16 +13,19 @@
   <script defer src="app.js"></script>
 </head>
 <body>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="bakery-entry" id="bakeryEntry" aria-hidden="true"><div class="entry-door entry-door-left"></div><div class="entry-door entry-door-right"></div><div class="entry-welcome"><span>JURI'S LITTLE BAKERY</span><b>تفضّلي، المخبز مفتوح</b><i>✳</i></div></div>
+  <div class="embers" id="embers" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
   <header class="topbar">
     <a class="brand" href="#top" aria-label="Juri Cooks الصفحة الرئيسية">
       <span class="brand-mark"><span>j</span><i>✳</i></span>
-      <span class="brand-name">Juri <b>Cooks</b><small>MY LITTLE RECIPE JOURNAL</small></span>
+      <span class="brand-name">Juri <b>Cooks</b><small>JURI'S LITTLE BAKERY</small></span>
     </a>
     <nav class="top-links" aria-label="التنقل الرئيسي">
       <a class="active" href="#recipes">وصفاتي</a>
       <a href="#collections">التصنيفات</a>
-      <a href="#about">عن الدفتر</a>
+      <a href="#about">عن المخبز</a>
     </nav>
     <div class="top-actions">
       <button class="icon-btn search-toggle" aria-label="فتح البحث" title="بحث">⌕</button>
@@ -34,33 +37,39 @@
   <main id="top">
     <section class="hero wrap">
       <div class="hero-copy">
-        <div class="eyebrow"><span class="sparkle">✳</span> وصفات جوري، على طريقتي</div>
-        <h1>كل وصفة لها<br><em>حكاية حلوة.</em></h1>
-        <p>دفتر مطبخي الصغير؛ وصفات أحبها، ملاحظات من تجاربي، وأشياء أتحمّس أجربها قريبًا.</p>
+        <div class="eyebrow"><span class="sparkle">✳</span> JURI'S LITTLE BAKERY · أهلاً بك</div>
+        <h1>ريحة الخَبز<br><em>تدلّك علينا.</em></h1>
+        <p>افتحي الباب، خذي لك شيء دافئ من الفرن، واختاري وصفتك القادمة من مخبز جوري.</p>
         <div class="hero-ctas">
-          <a href="#recipes" class="primary-link">تصفّحي الوصفات <span>←</span></a>
-          <span class="hand-note">مكتوب بحب، ومجرّب على مهل <span>♡</span></span>
+          <a href="#recipes" class="primary-link">ادخلي واجهة العرض <span>←</span></a>
+          <span class="hand-note">طازج من الفرن كلّه حب <span>♡</span></span>
         </div>
         <div class="hero-stats"><span><b id="recipeCount">2</b> وصفات</span><i></i><span><b id="favoriteCount">0</b> مفضّلة</span><i></i><span>من مطبخ جوري <b>♡</b></span></div>
       </div>
-      <div class="hero-art" aria-label="رسمة سينامون رول مرسومة بأسلوب مرح">
-        <div class="art-sun"></div><div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
-        <div class="cinnamon-plate"><div class="roll"><div class="roll-center"></div></div><div class="roll-shadow"></div></div>
-        <div class="sticker sticker-top">baked<br>with love</div><div class="sticker sticker-bottom">✿ صباح<br>ألذّ</div>
-        <span class="art-star star-a">✳</span><span class="art-star star-b">✦</span><span class="art-star star-c">·</span>
-        <span class="art-label">a little sweetness<br>for your day</span>
+      <div class="hero-art bakery-scene" aria-label="واجهة مخبز جوري الدافئة">
+        <div class="bakery-glow"></div><div class="bakery-arch"></div>
+        <div class="bakery-wall"><span class="wall-tile tile-one"></span><span class="wall-tile tile-two"></span><span class="wall-tile tile-three"></span><span class="wall-tile tile-four"></span></div>
+        <div class="bakery-awning"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="bakery-neon">Juri <b>Cooks</b><small>FRESH FROM THE OVEN</small></div>
+        <div class="bakery-lamp lamp-one"></div><div class="bakery-lamp lamp-two"></div>
+        <div class="bakery-shelf shelf-back"><span>🥐</span><span>🍞</span><span>🥖</span></div>
+        <div class="oven"><div class="oven-light"></div><div class="oven-roll">🥮</div><div class="oven-door"></div><span class="oven-knob"></span></div>
+        <div class="bakery-counter"><div class="counter-top"></div><div class="counter-front"><span>BAKED WITH LOVE</span><b>✳</b></div></div>
+        <div class="display-cloche cloche-one"><i>🥐</i></div><div class="display-cloche cloche-two"><i>🧁</i></div><div class="display-cloche cloche-three"><i>🍪</i></div>
+        <div class="steam steam-one"></div><div class="steam steam-two"></div><div class="steam steam-three"></div>
+        <div class="scene-sign">تفضّلي يا حلوة <span>♡</span></div><span class="scene-star">✦</span><span class="scene-spark">✳</span>
       </div>
-      <div class="hero-bottom-label">VOL. 01 <span>•</span> THE HOME KITCHEN</div>
+      <div class="hero-bottom-label">EST. WITH LOVE <span>•</span> THE JURI BAKERY</div>
     </section>
 
     <section class="welcome-strip wrap" id="collections">
-      <div class="strip-icon">✿</div><div><b>أهلًا في مطبخي!</b><span>هنا أجمع الوصفات اللي تستاهل تنحفظ.</span></div>
-      <button id="randomRecipe">فاجئيني بوصفة <span>↗</span></button>
+      <div class="strip-icon">✿</div><div><b>ريحة القرفة طالعة من الفرن!</b><span>طاولتك جاهزة، اختاري شيء دافئ لليوم.</span></div>
+      <button id="randomRecipe">اختاري لي من الواجهة <span>↗</span></button>
     </section>
 
     <section class="recipe-section wrap" id="recipes">
       <div class="section-heading">
-        <div><div class="eyebrow small-eye">THE RECIPE BOX <span>✳</span></div><h2>من دفتر <em>الوصفات</em></h2></div>
+        <div><div class="eyebrow small-eye">FRESH FROM JURI'S OVEN <span>✳</span></div><h2>واجهة العرض <em>اليوم</em></h2></div>
         <button class="text-link" id="viewAll">عرض الكل <span>←</span></button>
       </div>
       <div class="toolbar">
@@ -79,8 +88,8 @@
     </section>
 
     <section class="note-section wrap" id="about">
-      <div class="note-doodle">✿</div><div><span class="eyebrow small-eye">A NOTE FROM JURI</span><h2>الوصفة الحلوة<br>تستاهل <em>دفترها.</em></h2><p>كل وصفة هنا تبدأ بفكرة صغيرة، وتنتهي بشيء يخلّي اليوم ألطف. احفظي الملاحظات، عدّلي المقادير، وخلي الدفتر يشبهك.</p></div>
-      <div class="note-stamp">made<br>with ♡<br>by juri</div>
+      <div class="note-doodle">✿</div><div><span class="eyebrow small-eye">A NOTE FROM THE BAKER</span><h2>خذي لك قطعة<br>وخلي <em>الباقي علينا.</em></h2><p>وصفات مخبوزة بحب، محفوظة هنا عشان ترجعين لها كل ما اشتهيتي رائحة الفرن ودفء أول لقمة.</p></div>
+      <div class="note-stamp">fresh<br>from oven<br>♡ juri</div>
     </section>
   </main>
 
