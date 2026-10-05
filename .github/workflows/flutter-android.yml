@@ -1,0 +1,39 @@
+name: Build Juri Cooks Android app
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'flutter_app/**'
+      - '.github/workflows/flutter-android.yml'
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Generate Android, iOS, and web platform folders
+        run: flutter create --project-name juri_cooks --platforms=android,ios,web --no-pub /tmp/juri-cooks-platforms
+      - name: Add Flutter platform scaffolding
+        run: |
+          cp -a /tmp/juri-cooks-platforms/android flutter_app/
+          cp -a /tmp/juri-cooks-platforms/ios flutter_app/
+          cp -a /tmp/juri-cooks-platforms/web flutter_app/
+          cp /tmp/juri-cooks-platforms/.metadata flutter_app/
+      - name: Resolve Flutter dependencies
+        working-directory: flutter_app
+        run: flutter pub get
+      - name: Build release APK
+        working-directory: flutter_app
+        run: flutter build apk --release
+      - name: Upload installable Android APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: juri-cooks-android
+          path: flutter_app/build/app/outputs/flutter-apk/app-release.apk
+          if-no-files-found: error
+          retention-days: 14
