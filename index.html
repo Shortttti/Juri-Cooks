@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f4eb">
+  <meta name="description" content="Juri Cooks — دفتر وصفات جوري، محفوظة بحب ومكتوبة على مزاجك.">
+  <title>Juri Cooks — وصفات جوري</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Juri Cooks الصفحة الرئيسية">
+      <span class="brand-mark"><span>j</span><i>✳</i></span>
+      <span class="brand-name">Juri <b>Cooks</b><small>MY LITTLE RECIPE JOURNAL</small></span>
+    </a>
+    <nav class="top-links" aria-label="التنقل الرئيسي">
+      <a class="active" href="#recipes">وصفاتي</a>
+      <a href="#collections">التصنيفات</a>
+      <a href="#about">عن الدفتر</a>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-btn search-toggle" aria-label="فتح البحث" title="بحث">⌕</button>
+      <button class="add-button" id="openAdd"><span>＋</span> أضيفي وصفة</button>
+      <button class="avatar" aria-label="ملف جوري">ج</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="sparkle">✳</span> وصفات جوري، على طريقتي</div>
+        <h1>كل وصفة لها<br><em>حكاية حلوة.</em></h1>
+        <p>دفتر مطبخي الصغير؛ وصفات أحبها، ملاحظات من تجاربي، وأشياء أتحمّس أجربها قريبًا.</p>
+        <div class="hero-ctas">
+          <a href="#recipes" class="primary-link">تصفّحي الوصفات <span>←</span></a>
+          <span class="hand-note">مكتوب بحب، ومجرّب على مهل <span>♡</span></span>
+        </div>
+        <div class="hero-stats"><span><b id="recipeCount">2</b> وصفات</span><i></i><span><b id="favoriteCount">0</b> مفضّلة</span><i></i><span>من مطبخ جوري <b>♡</b></span></div>
+      </div>
+      <div class="hero-art" aria-label="رسمة سينامون رول مرسومة بأسلوب مرح">
+        <div class="art-sun"></div><div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+        <div class="cinnamon-plate"><div class="roll"><div class="roll-center"></div></div><div class="roll-shadow"></div></div>
+        <div class="sticker sticker-top">baked<br>with love</div><div class="sticker sticker-bottom">✿ صباح<br>ألذّ</div>
+        <span class="art-star star-a">✳</span><span class="art-star star-b">✦</span><span class="art-star star-c">·</span>
+        <span class="art-label">a little sweetness<br>for your day</span>
+      </div>
+      <div class="hero-bottom-label">VOL. 01 <span>•</span> THE HOME KITCHEN</div>
+    </section>
+
+    <section class="welcome-strip wrap" id="collections">
+      <div class="strip-icon">✿</div><div><b>أهلًا في مطبخي!</b><span>هنا أجمع الوصفات اللي تستاهل تنحفظ.</span></div>
+      <button id="randomRecipe">فاجئيني بوصفة <span>↗</span></button>
+    </section>
+
+    <section class="recipe-section wrap" id="recipes">
+      <div class="section-heading">
+        <div><div class="eyebrow small-eye">THE RECIPE BOX <span>✳</span></div><h2>من دفتر <em>الوصفات</em></h2></div>
+        <button class="text-link" id="viewAll">عرض الكل <span>←</span></button>
+      </div>
+      <div class="toolbar">
+        <div class="filters" id="filters" role="group" aria-label="تصنيف الوصفات">
+          <button class="filter active" data-category="الكل">الكل <span>02</span></button>
+          <button class="filter" data-category="مخبوزات">مخبوزات <span>01</span></button>
+          <button class="filter" data-category="فطور">فطور <span>01</span></button>
+          <button class="filter" data-category="حلويات">حلويات <span>01</span></button>
+          <button class="filter" data-category="المفضّلة">♡ المفضّلة</button>
+        </div>
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="ابحثي عن وصفة..." aria-label="ابحثي عن وصفة"></label>
+      </div>
+      <div class="recipe-grid" id="recipeGrid"></div>
+      <div class="empty-state hidden" id="emptyState"><span>☁</span><b>ما لقينا وصفة بهذا الاسم</b><p>جرّبي كلمة ثانية أو أضيفي وصفة جديدة.</p></div>
+      <div class="section-foot"><span>مصنوع على مهل في مطبخ جوري</span><span class="foot-line"></span><span>✳</span></div>
+    </section>
+
+    <section class="note-section wrap" id="about">
+      <div class="note-doodle">✿</div><div><span class="eyebrow small-eye">A NOTE FROM JURI</span><h2>الوصفة الحلوة<br>تستاهل <em>دفترها.</em></h2><p>كل وصفة هنا تبدأ بفكرة صغيرة، وتنتهي بشيء يخلّي اليوم ألطف. احفظي الملاحظات، عدّلي المقادير، وخلي الدفتر يشبهك.</p></div>
+      <div class="note-stamp">made<br>with ♡<br>by juri</div>
+    </section>
+  </main>
+
+  <footer class="footer"><a class="footer-brand" href="#top">Juri <b>Cooks</b> <span>✳</span></a><span>دفتر وصفات صغير، بحب كبير.</span><span>© JURI COOKS 2026</span></footer>
+
+  <div class="modal-backdrop hidden" id="recipeModal" role="dialog" aria-modal="true" aria-label="تفاصيل الوصفة"><div class="modal recipe-modal"><button class="close-modal" data-close aria-label="إغلاق">×</button><div id="recipeDetail"></div></div></div>
+  <div class="modal-backdrop hidden" id="addModal" role="dialog" aria-modal="true" aria-labelledby="addTitle"><div class="modal add-modal"><button class="close-modal" data-close aria-label="إغلاق">×</button><div class="eyebrow small-eye">A NEW PAGE IN YOUR BOOK</div><h2 id="addTitle">أضيفي <em>وصفة جديدة</em></h2><p class="modal-intro">خلّيها أول سطر في حكاية جديدة.</p><form id="addRecipeForm">
+    <label>اسم الوصفة<input required name="title" placeholder="مثال: كوكيز الشوكولاتة"></label>
+    <div class="form-row"><label>التصنيف<select name="category"><option>حلويات</option><option>مخبوزات</option><option>فطور</option><option>مشروبات</option><option>غداء</option><option>عشاء</option><option>أخرى</option></select></label><label>الوقت بالدقائق<input type="number" min="1" name="time" value="30"></label></div>
+    <label>وصف قصير<textarea name="description" rows="2" placeholder="ليش تحبينها؟"></textarea></label>
+    <label>المقادير <small>اكتبي كل مكوّن في سطر</small><textarea required name="ingredients" rows="4" placeholder="2 كوب دقيق&#10;ملعقة سكر"></textarea></label>
+    <label>الطريقة <small>اكتبي كل خطوة في سطر</small><textarea required name="steps" rows="4" placeholder="اخلطي المكونات الجافة...&#10;أضيفي الزبدة... "></textarea></label>
+    <button class="add-button form-submit" type="submit">احفظيها في دفتري <span>♡</span></button>
+  </form></div></div>
+  <div class="toast" id="toast" role="status"></div>
+</body>
+</html>
