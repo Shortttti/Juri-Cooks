@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=interactive-bakery-2">
+  <link rel="stylesheet" href="styles.css?v=touch-icons-1">
   <script defer src="app.js?v=interactive-bakery-3"></script>
 </head>
 <body>
@@ -28,9 +28,9 @@
       <a href="#about">عن المخبز</a>
     </nav>
     <div class="top-actions">
-      <button class="icon-btn search-toggle" aria-label="فتح البحث" title="بحث">⌕</button>
-      <button class="tray-button" id="openTray" aria-label="افتحي صينية التجهيز"><span>▱</span> صينيتي <i id="trayCount">0</i></button>
-      <button class="add-button" id="openAdd"><span>＋</span> أضيفي وصفة</button>
+      <button class="icon-btn search-toggle" aria-label="فتح البحث" title="بحث"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 4 4"/></svg></button>
+      <button class="tray-button" id="openTray" aria-label="افتحي صينية التجهيز"><span class="tray-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l-1.5 11h-13L4 8Z"/><path d="M8 8a4 4 0 0 1 8 0"/></svg></span> صينيتي <i id="trayCount">0</i></button>
+      <button class="add-button" id="openAdd"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> أضيفي وصفة</button>
       <button class="avatar" aria-label="ملف جوري">ج</button>
     </div>
   </header>
@@ -81,7 +81,7 @@
           <button class="filter" data-category="حلويات">حلويات <span>01</span></button>
           <button class="filter" data-category="المفضّلة">♡ المفضّلة</button>
         </div>
-        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="ابحثي عن وصفة..." aria-label="ابحثي عن وصفة"></label>
+        <label class="search-box"><span class="search-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 4 4"/></svg></span><input id="searchInput" type="search" placeholder="ابحثي عن وصفة..." aria-label="ابحثي عن وصفة"></label>
       </div>
       <div class="recipe-grid" id="recipeGrid"></div>
       <div class="empty-state hidden" id="emptyState"><span>☁</span><b>ما لقينا وصفة بهذا الاسم</b><p>جرّبي كلمة ثانية أو أضيفي وصفة جديدة.</p></div>
@@ -95,7 +95,12 @@
   </main>
 
   <footer class="footer"><a class="footer-brand" href="#top">Juri <b>Cooks</b> <span>✳</span></a><span>دفتر وصفات صغير، بحب كبير.</span><span>© JURI COOKS 2026</span></footer>
-  <nav class="mobile-dock" aria-label="تنقل سريع"><a href="#top"><span>⌂</span><small>المخبز</small></a><a href="#recipes"><span>♨</span><small>الوصفات</small></a><button id="mobileDailyPick"><span>✦</span><small>فاجئيني</small></button><button id="mobileTray"><span>▱</span><small>صينيتي <i id="mobileTrayCount">0</i></small></button></nav>
+  <nav class="mobile-dock" aria-label="تنقل سريع">
+    <a href="#top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-7 9 7v9a1 1 0 0 1-1 1h-6v-6h-4v6H4a1 1 0 0 1-1-1v-9Z"/></svg><small>المخبز</small></a>
+    <a href="#recipes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18h14M7 18c0-5.5 2-9 5-9s5 3.5 5 9M9 5c0 1.2 1 1.4 1 2.6M14 4c0 1.2 1 1.4 1 2.6"/></svg><small>الوصفات</small></a>
+    <button id="mobileDailyPick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2L12 3Z"/><path d="m19 16 .9 2.1L22 19l-2.1.9L19 22l-.9-2.1L16 19l2.1-.9L19 16Z"/></svg><small>فاجئيني</small></button>
+    <button id="mobileTray"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l-1.5 11h-13L4 8Z"/><path d="M8 8a4 4 0 0 1 8 0"/></svg><small>صينيتي <i id="mobileTrayCount">0</i></small></button>
+  </nav>
 
   <div class="modal-backdrop hidden" id="recipeModal" role="dialog" aria-modal="true" aria-label="تفاصيل الوصفة"><div class="modal recipe-modal"><button class="close-modal" data-close aria-label="إغلاق">×</button><div id="recipeDetail"></div></div></div>
   <div class="modal-backdrop hidden" id="addModal" role="dialog" aria-modal="true" aria-labelledby="addTitle"><div class="modal add-modal"><button class="close-modal" data-close aria-label="إغلاق">×</button><div class="eyebrow small-eye">A NEW PAGE IN YOUR BOOK</div><h2 id="addTitle">أضيفي <em>وصفة جديدة</em></h2><p class="modal-intro">خلّيها أول سطر في حكاية جديدة.</p><form id="addRecipeForm">

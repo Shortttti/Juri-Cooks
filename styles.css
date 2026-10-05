@@ -54,3 +54,11 @@ body{background:#f6eee1;color:var(--ink)}
 }
 @media(max-width:360px){.brand-name{font-size:17px}.hero-art{transform:scale(.79);margin-bottom:-50px}.hero-ctas{gap:12px}.section-heading h2{font-size:22px}.mobile-dock{left:7px;right:7px}.mobile-dock small{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.measure-control button,.mobile-dock a,.mobile-dock button{transition:none!important;scroll-behavior:auto!important}}
+
+/* SVG UI icons stay crisp across mobile system fonts */
+.top-actions>button svg,.search-icon svg,.mobile-dock svg{display:block;width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}.icon-btn{display:grid;place-items:center;transform:none}.icon-btn svg{width:23px;height:23px}.search-icon{display:grid;place-items:center}.search-icon svg{width:19px;height:19px}.tray-button .tray-icon{display:inline-grid;place-items:center;vertical-align:middle}.tray-icon svg{display:block;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.add-button>svg{display:inline-block;width:15px;height:15px;vertical-align:-3px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;margin-inline-end:5px}.mobile-dock svg{width:23px;height:23px}.search-box>span{transform:none}
+@keyframes touchShimmer{0%,65%,100%{transform:translateX(-125%)}78%{transform:translateX(125%)}}
+@keyframes touchFoodBob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-4px) rotate(1deg)}}
+@media(hover:none) and (pointer:coarse){.card-art:after{animation:touchShimmer 7s ease-in-out 1.2s infinite}.food-emoji{animation:touchFoodBob 3.8s ease-in-out infinite}.favorite-btn:active,.tray-add:active,.open-recipe:active,.mobile-dock button:active,.mobile-dock a:active{transform:scale(.94)}.favorite-btn,.tray-add,.open-recipe{touch-action:manipulation}}
+@media(max-width:600px){.topbar .icon-btn{width:40px;height:40px}.top-actions>button svg{width:21px;height:21px}.tray-button .tray-icon svg{width:19px;height:19px}.mobile-dock svg{width:24px;height:24px}.mobile-dock small{line-height:1.45}}
+@media(prefers-reduced-motion:reduce){.card-art:after,.food-emoji{animation:none!important}}
