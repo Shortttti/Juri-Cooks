@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=interactive-bakery-1">
-  <script defer src="app.js?v=interactive-bakery-1"></script>
+  <link rel="stylesheet" href="styles.css?v=interactive-bakery-2">
+  <script defer src="app.js?v=interactive-bakery-2"></script>
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
@@ -95,6 +95,7 @@
   </main>
 
   <footer class="footer"><a class="footer-brand" href="#top">Juri <b>Cooks</b> <span>✳</span></a><span>دفتر وصفات صغير، بحب كبير.</span><span>© JURI COOKS 2026</span></footer>
+  <nav class="mobile-dock" aria-label="تنقل سريع"><a href="#top"><span>⌂</span><small>المخبز</small></a><a href="#recipes"><span>♨</span><small>الوصفات</small></a><button id="mobileDailyPick"><span>✦</span><small>فاجئيني</small></button><button id="mobileTray"><span>▱</span><small>صينيتي <i id="mobileTrayCount">0</i></small></button></nav>
 
   <div class="modal-backdrop hidden" id="recipeModal" role="dialog" aria-modal="true" aria-label="تفاصيل الوصفة"><div class="modal recipe-modal"><button class="close-modal" data-close aria-label="إغلاق">×</button><div id="recipeDetail"></div></div></div>
   <div class="modal-backdrop hidden" id="addModal" role="dialog" aria-modal="true" aria-labelledby="addTitle"><div class="modal add-modal"><button class="close-modal" data-close aria-label="إغلاق">×</button><div class="eyebrow small-eye">A NEW PAGE IN YOUR BOOK</div><h2 id="addTitle">أضيفي <em>وصفة جديدة</em></h2><p class="modal-intro">خلّيها أول سطر في حكاية جديدة.</p><form id="addRecipeForm">
